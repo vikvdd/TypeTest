@@ -15,7 +15,6 @@ public class Game implements KeyListener
 	private Score score;
 	private String currentWord;
 	
-	//test
 	public Game(Score score, TextField tField, List<Word> wordList)
 	{
 		gameDone = false;
