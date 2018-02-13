@@ -7,8 +7,8 @@ public class GUI extends Frame implements ActionListener, WindowListener, KeyLis
 	
 	private Label mainLbl;
 	private Button btn1;
-	
 	private TextField typeTxt;
+	private List<Word> wordList;
 	
 	//instantiate frame and set up labels/buttons/textfields
 	public GUI()
@@ -61,7 +61,12 @@ public class GUI extends Frame implements ActionListener, WindowListener, KeyLis
 	{
 		if (e.getKeyCode() == 32)
 		{
+			typeTxt.setText("");
 			
+		}
+		if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
+		{
+			typeTxt.setText(t);
 		}
 	}
 	
@@ -99,6 +104,13 @@ public class GUI extends Frame implements ActionListener, WindowListener, KeyLis
 	{
 		return mainLbl;
 	}
+	
+	public TextField getTextField()
+	{
+		return typeTxt;
+	}
+	
+	
 	
 	//set text for main text label
 	public void setTextLbl(String newTxt)

@@ -28,7 +28,7 @@ public class Main
 		Game game = new Game();
 		Score score = new Score(1);
 		
-		game.start(score, wordList, 0);
+		game.start(gui, score, wordList, 0);
 	}
 	
 //UTILITY////////////////////////////////////////////////////////////////////////////////////////////

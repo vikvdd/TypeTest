@@ -38,4 +38,9 @@ public class Word
 		spelledWord = newWord_.toLowerCase();
 	}
 	
+	public void setWordAfterSpace() 
+	{
+		
+	}
+	
 }

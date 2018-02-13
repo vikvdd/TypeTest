@@ -13,7 +13,7 @@ public class Game
 	}
 	
 	//starts timer for given amount of time. Then compares whether the typed word matches the expected word and increments score accordingly
-	public Score start(Score score_, List<Word> words_, int cnt_)
+	public Score start(GUI gui_, Score score_, List<Word> words_, int cnt_)
 	{
 		int totalTime = score_.getTotalTime();
 		Timer timer = new Timer();
@@ -30,6 +30,7 @@ public class Game
 		//while time is running test if input words match expected words
 		while (!gameDone)
 		{
+			
 			Word word = words_.get(cnt_);
 			word.setSpelledWord(inputStr());
 			if (word.spellCheck(word))
