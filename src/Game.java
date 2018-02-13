@@ -3,7 +3,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,8 +27,10 @@ public class Game implements KeyListener
 			@Override
 			public void keyPressed(KeyEvent e) 
 			{
+				//update currently typed word per key press
 				currentWord += e.getKeyChar() + "";
 				
+				//if space is pressed and time isnt up it spell checks word and reacts appropriately 
 				if (e.getKeyCode() == 32 && !gameDone)
 				{
 					Word word = wordList.get(count);
@@ -43,6 +44,7 @@ public class Game implements KeyListener
 					count++;
 					currentWord = "";
 				}
+				//if backspace is pressed it checks to see if a word is being retyped, and the adjusts word count
 				if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
 				{
 					if ((tField.getText().equals("") || tField.getText().equals(" ") || tField.getText().equals("  ")))
@@ -75,18 +77,10 @@ public class Game implements KeyListener
 		return score_;
 	}
 	
+	//print error messsage 
 	public static void errorMsg()
 	{
 		System.out.println("incorrect word");
-	}
-	
-	public static String inputStr()
-	{
-		Scanner scanner = new Scanner(System.in);
-		String response = scanner.nextLine();
-		
-		return response;
-		
 	}
 
 	@Override

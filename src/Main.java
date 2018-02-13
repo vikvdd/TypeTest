@@ -10,7 +10,7 @@ public class Main
 		List<Word> wordList = new ArrayList<Word>();
 		WordReader wReader = new WordReader(fileName);
 		
-		
+		//set up word list 
 		try 
 		{
 			wordList = wReader.readFile();
@@ -20,12 +20,14 @@ public class Main
 			e.printStackTrace();
 		}
 		
+		//set up game objects
 		GUI gui = new GUI();
-		gui.setTextLbl(wordList);
-	
 		Score score = new Score(1);
 		Game game = new Game(score, gui.getTextField(), wordList);
+		
+		gui.setTextLbl(wordList);
 	
+		//start game
 		game.start(gui, score, wordList, 0);
 	}
 	

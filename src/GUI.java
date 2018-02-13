@@ -14,9 +14,8 @@ public class GUI extends Frame implements ActionListener, WindowListener
 	public GUI()
 	{
 		super("Typer");
-		addWindowListener(this);
 		
-		
+		// declare and add all components 
 		mainLbl = new Label("");
 		mainLbl.setSize(this.getWidth(), 300);
 		typeTxt = new TextField("", 30);
@@ -26,8 +25,11 @@ public class GUI extends Frame implements ActionListener, WindowListener
 		add(typeTxt);
 		add(btn1);
 		
+		//add listeners
 		btn1.addActionListener(this);
+		addWindowListener(this);
 		
+		// setup the frame);
 		setTitle("Typer");
 		setPreferredSize(new Dimension(400, 400));
 		setLayout(new GridLayout(3, 1));
@@ -37,6 +39,7 @@ public class GUI extends Frame implements ActionListener, WindowListener
 
 	
 //GUI EVENTS/////////////////////////////////////////////////////	
+	//triggers when action event occurs
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -61,14 +64,6 @@ public class GUI extends Frame implements ActionListener, WindowListener
 	 @Override public void windowDeiconified(WindowEvent evt) { }
 	 @Override public void windowActivated(WindowEvent evt) { }
 	 @Override public void windowDeactivated(WindowEvent evt) { }
-	
-	
-	
-	
-	public static void main(String[] args)
-	{
-		
-	}
 
 	//return main text label
 	public Label getTextLbl()
@@ -76,6 +71,7 @@ public class GUI extends Frame implements ActionListener, WindowListener
 		return mainLbl;
 	}
 	
+	//returns textfield
 	public TextField getTextField()
 	{
 		return typeTxt;
@@ -91,6 +87,7 @@ public class GUI extends Frame implements ActionListener, WindowListener
 		return;
 	}
 	
+	//sets text label using all words in wordlist
 	public void setTextLbl(List<Word> words_)
 	{
 		for(int i = 0; i < words_.size(); i++)
@@ -102,12 +99,15 @@ public class GUI extends Frame implements ActionListener, WindowListener
 		return;
 	}
 	
-	public void setLabelSize(Label lbl, int width, int height) {
+	//sets label size for text label
+	public void setLabelSize(Label lbl, int width, int height) 
+	{
 		lbl.setSize(width, height);
 		
 		return;
 	}
 	
+	//prints given message
 	public void printMsg(String msg) {
 		System.out.println(msg);
 		

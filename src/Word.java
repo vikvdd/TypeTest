@@ -36,6 +36,7 @@ public class Word
 		return spelledWord;
 	}
 
+	//set spelled word and removes any space chars from string
 	public void setSpelledWord(String newWord_)
 	{
 		newWord_ = newWord_.replace(" ", "");
