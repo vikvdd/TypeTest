@@ -25,12 +25,15 @@ public class Typer
 		GUI gui = new GUI();
 		gui.setTextLbl(wordList);
 		
-		Score score = typeTest(wordList, 0);
+		Score score = new Score(1);
+		score = typeTest(score, wordList, 0, 1);
+		
+		
+		
 	}
 
-	public static Score typeTest(List<Word> words_, int cnt_, int totalTime_)
+	public static Score typeTest(Score score_, List<Word> words_, int cnt_, int totalTime_)
 	{
-		Score score = new Score();
 		Timer timer = new Timer();
 		boolean time = true;
 		
@@ -39,7 +42,7 @@ public class Typer
 			@Override
 			public void run() 
 			{
-				time = false;
+				
 			}
 		}, totalTime_ * 60 * 1000);
 		while (time == true)
@@ -48,7 +51,7 @@ public class Typer
 			word.setSpelledWord(inputStr(""));
 			if (word.spellCheck(word))
 			{
-				score.correctWord();
+				score_.correctWord();
 			}
 			else 
 			{
@@ -56,7 +59,7 @@ public class Typer
 			}
 		}
 		
-		return score;
+		return score_;
 	}
 	
 //UTILITY////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,6 +85,7 @@ public class Typer
 		print(msg);
 		Scanner scanner = new Scanner(System.in);
 		String response = scanner.nextLine();
+		scanner.close();
 		
 		return response;
 		
