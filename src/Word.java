@@ -7,7 +7,7 @@ public class Word
 	
 	public Word(String word_, String spelledWord_)
 	{
-		word = word_;
+		word = word_.toLowerCase();
 		spelledWord = spelledWord_;
 		spellCheck = false;
 	}
@@ -34,6 +34,7 @@ public class Word
 	
 	public void setSpelledWord(String newWord_)
 	{
-		spelledWord = newWord_;
+		spelledWord = newWord_.toLowerCase();
 	}
+	
 }

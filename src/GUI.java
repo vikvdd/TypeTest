@@ -31,7 +31,7 @@ public class GUI extends Frame implements ActionListener, WindowListener, KeyLis
 			@Override
 			public void keyPressed(KeyEvent e) 
 			{
-				printMsg(e.getKeyCode() + "");
+				
 			}
 		});
 		

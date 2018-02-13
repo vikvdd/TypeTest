@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Timer;
 
-public class Typer 
+public class Main 
 {
 	public static void main(String[] args) 
 	{
@@ -25,41 +25,12 @@ public class Typer
 		GUI gui = new GUI();
 		gui.setTextLbl(wordList);
 		
+		Game game = new Game();
 		Score score = new Score(1);
-		score = typeTest(score, wordList, 0, 1);
+		
+		game.start(score, wordList, 0, 1);
 		
 		
-		
-	}
-
-	public static Score typeTest(Score score_, List<Word> words_, int cnt_, int totalTime_)
-	{
-		Timer timer = new Timer();
-		boolean time = true;
-		
-		timer.schedule(new TimerTask() {
-			
-			@Override
-			public void run() 
-			{
-				
-			}
-		}, totalTime_ * 60 * 1000);
-		while (time == true)
-		{
-			Word word = words_.get(cnt_);
-			word.setSpelledWord(inputStr(""));
-			if (word.spellCheck(word))
-			{
-				score_.correctWord();
-			}
-			else 
-			{
-				errorMsg(3);
-			}
-		}
-		
-		return score_;
 	}
 	
 //UTILITY////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,17 +49,6 @@ public class Typer
 		{
 			print("This is not the correct spelling.");
 		}
-	}
-	
-	public static String inputStr(String msg)
-	{
-		print(msg);
-		Scanner scanner = new Scanner(System.in);
-		String response = scanner.nextLine();
-		scanner.close();
-		
-		return response;
-		
 	}
 	
 	//print given string 
