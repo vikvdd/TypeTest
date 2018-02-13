@@ -27,6 +27,7 @@ public class Game
 			
 			}
 		}, totalTime * 60 * 1000);
+		//while time is running test if input words match expected words
 		while (!gameDone)
 		{
 			Word word = words_.get(cnt_);
@@ -56,7 +57,6 @@ public class Game
 	{
 		Scanner scanner = new Scanner(System.in);
 		String response = scanner.nextLine();
-		scanner.close();
 		
 		return response;
 		

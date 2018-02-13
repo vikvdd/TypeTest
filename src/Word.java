@@ -12,6 +12,7 @@ public class Word
 		spellCheck = false;
 	}
 	
+	//test if spelled word matches actual word
 	public boolean spellCheck(Word word_)
 	{
 		if (word_.getSpelledWord().equals(word_.getWord()))
