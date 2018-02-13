@@ -2,8 +2,6 @@ import java.io.*;
 import java.util.*;
 import java.util.List;
 
-
-
 public class Main 
 {
 	public static void main(String[] args) 
@@ -24,10 +22,10 @@ public class Main
 		
 		GUI gui = new GUI();
 		gui.setTextLbl(wordList);
-		
-		Game game = new Game();
+	
 		Score score = new Score(1);
-		
+		Game game = new Game(score, gui.getTextField(), wordList);
+	
 		game.start(gui, score, wordList, 0);
 	}
 	

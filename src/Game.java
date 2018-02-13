@@ -1,15 +1,54 @@
+import java.awt.TextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Game 
+public class Game implements KeyListener
 {
-	boolean gameDone;
+	private boolean gameDone;
+	private TextField tField;
+	private List<Word> wordList;
+	private int count;
+	private Score score;
 	
-	public Game()
+	
+	public Game(Score score, TextField tField, List<Word> wordList)
 	{
 		gameDone = false;
+		this.tField = tField;
+		this.wordList = wordList;
+		this.score = score;
+		tField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if (e.getKeyCode() == 32 && !gameDone)
+				{
+					wordList.get(count).setSpelledWord(tField.getText());
+					boolean corrSpell = wordList.get(count).spellCheck();
+					System.out.println(wordList.get(count).getSpelledWord() + "" + wordList.get(count).getWord() + "" + count);
+					if (corrSpell)
+					{
+						score.correctWord();
+						System.out.println("yesssss");
+						count++;
+						tField.setText("");
+					}
+				}
+				if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
+				{
+					if ((tField.getText().equals("") || tField.getText().equals(" ") || tField.getText().equals("  ")))
+					{
+						count--;
+					}
+				}
+				
+			}
+		});
 	}
 	
 	//starts timer for given amount of time. Then compares whether the typed word matches the expected word and increments score accordingly
@@ -17,6 +56,7 @@ public class Game
 	{
 		int totalTime = score_.getTotalTime();
 		Timer timer = new Timer();
+		count = cnt_;
 		
 		timer.schedule(new TimerTask() {
 			
@@ -28,23 +68,6 @@ public class Game
 			}
 		}, totalTime * 60 * 1000);
 		//while time is running test if input words match expected words
-		while (!gameDone)
-		{
-			
-			Word word = words_.get(cnt_);
-			word.setSpelledWord(inputStr());
-			if (word.spellCheck(word))
-			{
-				score_.correctWord();
-				System.out.println("yeah buddy");
-			}
-			else 
-			{
-				errorMsg();
-			}
-			
-			cnt_++;
-		}
 		
 		return score_;
 	}
@@ -62,6 +85,28 @@ public class Game
 		return response;
 		
 	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
 	
 
 }

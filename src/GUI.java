@@ -2,13 +2,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-public class GUI extends Frame implements ActionListener, WindowListener, KeyListener
+public class GUI extends Frame implements ActionListener, WindowListener
 {
 	
 	private Label mainLbl;
 	private Button btn1;
 	private TextField typeTxt;
-	private List<Word> wordList;
+	
 	
 	//instantiate frame and set up labels/buttons/textfields
 	public GUI()
@@ -27,13 +27,6 @@ public class GUI extends Frame implements ActionListener, WindowListener, KeyLis
 		add(btn1);
 		
 		btn1.addActionListener(this);
-		typeTxt.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) 
-			{
-				
-			}
-		});
 		
 		setTitle("Typer");
 		setPreferredSize(new Dimension(400, 400));
@@ -52,28 +45,7 @@ public class GUI extends Frame implements ActionListener, WindowListener, KeyLis
 			
 		}
 	}
-	
-//KEYBOARD EVENTS/////////////////////////////////////////////////////
-	
-	//perform action based on key pressed on key listener
-	@Override
-	public void keyPressed(KeyEvent e) 
-	{
-		if (e.getKeyCode() == 32)
-		{
-			typeTxt.setText("");
-			
-		}
-		if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
-		{
-			typeTxt.setText(t);
-		}
-	}
-	
-	@Override public void keyReleased(KeyEvent e) {}
 
-
-	@Override public void keyTyped(KeyEvent e) {}
 
 //WINDOW EVENTS/////////////////////////////////////////////////////
 	
@@ -98,7 +70,7 @@ public class GUI extends Frame implements ActionListener, WindowListener, KeyLis
 	{
 		
 	}
-	
+
 	//return main text label
 	public Label getTextLbl()
 	{

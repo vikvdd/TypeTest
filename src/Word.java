@@ -13,9 +13,9 @@ public class Word
 	}
 	
 	//test if spelled word matches actual word
-	public boolean spellCheck(Word word_)
+	public boolean spellCheck()
 	{
-		if (word_.getSpelledWord().equals(word_.getWord()))
+		if (spelledWord.equals(word))
 		{
 			spellCheck = true;
 		}

@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 public class WordReader 
 {
 	private String fileName;
@@ -32,7 +30,7 @@ public class WordReader
 			FileReader fr = new FileReader(fileDir + fileName);
 			BufferedReader br = new BufferedReader(fr);
 			String s;
-			
+		
 			//loop through file and add each line to List
 			while((s = br.readLine()) != null)
 			{
@@ -58,6 +56,7 @@ public class WordReader
 		//show error message informing of a missing file
 		catch (FileNotFoundException ex)
 		{
+			
 		}
 		
 		return wordList;
