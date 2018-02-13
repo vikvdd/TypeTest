@@ -42,7 +42,7 @@ public class WordReader
 			{
 				
 				ll.toLowerCase();
-				ll.replace(".", "");
+				ll = ll.replace(".", "");
 				String[] tempList = ll.split(" ");
 				for (int i = 0; i < tempList.length; i++)
 				{

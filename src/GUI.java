@@ -46,7 +46,6 @@ public class GUI extends Frame implements ActionListener, WindowListener
 		}
 	}
 
-
 //WINDOW EVENTS/////////////////////////////////////////////////////
 	
 	//close window when X is pressed on window container

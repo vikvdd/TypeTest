@@ -7,20 +7,23 @@ public class Word
 	
 	public Word(String word_, String spelledWord_)
 	{
+		word_ = word_.replace(" ", "");
 		word = word_.toLowerCase();
 		spelledWord = spelledWord_;
 		spellCheck = false;
 	}
 	
 	//test if spelled word matches actual word
-	public boolean spellCheck()
+	public void spellCheck()
 	{
 		if (spelledWord.equals(word))
 		{
 			spellCheck = true;
 		}
-		
-		return spellCheck;
+		else
+		{
+			spellCheck = false;
+		}
 	}
 	
 	public String getWord()
@@ -32,10 +35,16 @@ public class Word
 	{
 		return spelledWord;
 	}
-	
+
 	public void setSpelledWord(String newWord_)
 	{
+		newWord_ = newWord_.replace(" ", "");
 		spelledWord = newWord_.toLowerCase();
+	}
+	
+	public boolean getSpellCheck()
+	{
+		return spellCheck;
 	}
 	
 	public void setWordAfterSpace() 

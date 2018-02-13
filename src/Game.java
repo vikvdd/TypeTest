@@ -14,6 +14,7 @@ public class Game implements KeyListener
 	private List<Word> wordList;
 	private int count;
 	private Score score;
+	private String currentWord;
 	
 	
 	public Game(Score score, TextField tField, List<Word> wordList)
@@ -22,22 +23,25 @@ public class Game implements KeyListener
 		this.tField = tField;
 		this.wordList = wordList;
 		this.score = score;
+		currentWord = "";
 		tField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) 
 			{
+				currentWord += e.getKeyChar() + "";
+				
 				if (e.getKeyCode() == 32 && !gameDone)
 				{
-					wordList.get(count).setSpelledWord(tField.getText());
-					boolean corrSpell = wordList.get(count).spellCheck();
-					System.out.println(wordList.get(count).getSpelledWord() + "" + wordList.get(count).getWord() + "" + count);
-					if (corrSpell)
+					Word word = wordList.get(count);
+					word.setSpelledWord(currentWord);
+					word.spellCheck();
+					
+					if (word.getSpellCheck() == true)
 					{
 						score.correctWord();
-						System.out.println("yesssss");
-						count++;
-						tField.setText("");
 					}
+					count++;
+					currentWord = "";
 				}
 				if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
 				{
@@ -46,11 +50,10 @@ public class Game implements KeyListener
 						count--;
 					}
 				}
-				
 			}
 		});
 	}
-	
+
 	//starts timer for given amount of time. Then compares whether the typed word matches the expected word and increments score accordingly
 	public Score start(GUI gui_, Score score_, List<Word> words_, int cnt_)
 	{

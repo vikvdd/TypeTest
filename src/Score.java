@@ -21,6 +21,12 @@ public class Score
 		realCPM = 0;
 	}
 	
+	public String getTotalScore()
+	{
+		String score = "Words: " + totalWords + " Correct Words: " + correctWords;
+		return score;
+	}
+
 	public int getCorWords()
 	{
 		return correctWords;
