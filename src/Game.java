@@ -41,6 +41,7 @@ public class Game implements KeyListener
 					{
 						score.correctWord();
 					}
+					score.incorrectWord();
 					count++;
 					currentWord = "";
 				}
@@ -52,6 +53,7 @@ public class Game implements KeyListener
 						count--;
 					}
 				}
+				
 			}
 		});
 	}
@@ -69,6 +71,7 @@ public class Game implements KeyListener
 			public void run() 
 			{
 				gameDone = true;
+				System.out.println(score.getTotalScore());
 			
 			}
 		}, totalTime * 60 * 1000);

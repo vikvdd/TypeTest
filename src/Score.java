@@ -59,6 +59,11 @@ public class Score
 		correctWords++;
 	}
 	
+	public void incorrectWord()
+	{
+		totalWords++;
+	}
+	
 	public void setWPM()
 	{
 		WPM = totalWords;
