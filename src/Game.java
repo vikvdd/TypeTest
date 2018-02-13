@@ -27,7 +27,10 @@ public class Game implements KeyListener
 			public void keyPressed(KeyEvent e) 
 			{
 				//update currently typed word per key press
-				currentWord += e.getKeyChar() + "";
+				if (e.getKeyCode() != KeyEvent.VK_BACK_SPACE)
+				{
+					currentWord += e.getKeyChar() + "";
+				}
 				
 				//if space is pressed and time isnt up it spell checks word and reacts appropriately 
 				if (e.getKeyCode() == 32 && !gameDone)
@@ -40,16 +43,21 @@ public class Game implements KeyListener
 					{
 						score.correctWord();
 					}
-					score.incorrectWord();
+					else 
+					{
+						score.incorrectWord();
+					}
 					count++;
 					currentWord = "";
+					System.out.println("|" + word.getWord() + "|" + word.getSpelledWord() + "|");
 				}
 				//if backspace is pressed it checks to see if a word is being retyped, and the adjusts word count
 				if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
 				{
-					if ((tField.getText().equals("") || tField.getText().equals(" ") || tField.getText().equals("  ")))
+					if (currentWord.equals("") || currentWord.equals(" ") || currentWord.equals("  "))
 					{
 						count--;
+						score.removeWord();
 					}
 				}
 				

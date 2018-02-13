@@ -3,12 +3,10 @@ public class Score
 {
 	private int correctWords;
 	private int totalWords;
-	private int totalChar;
 	private int totalTime;
 	private int WPM;
 	private int CPM;
 	private int realWPM;
-	private int realCPM;
 	
 	public Score(int totalTime)
 	{
@@ -18,13 +16,12 @@ public class Score
 		WPM = 0;
 		CPM = 0;
 		realWPM = 0;
-		realCPM = 0;
 	}
 	
 	//returns total score in string form
 	public String getTotalScore()
 	{
-		String score = "Words: " + totalWords + " Correct Words: " + correctWords;
+		String score = "Words:" + totalWords + " Correct Words:" + correctWords + " Real WPM:" + realWPM + " WPM:" + WPM;
 		return score;
 	}
 
@@ -41,6 +38,11 @@ public class Score
 	public int getWPM()
 	{
 		return WPM;
+	}
+	
+	public int getCPM()
+	{
+		return CPM;
 	}
 	
 	public int getRealWPM()
@@ -64,11 +66,22 @@ public class Score
 		totalWords++;
 	}
 	
+	public void removeWord() 
+	{
+		totalWords--;
+		correctWords--;
+	}
+	
 	public void setWPM()
 	{
-		WPM = totalWords;
-		realWPM = correctWords;
-		
+		WPM = totalWords/totalTime;
+		realWPM = correctWords/totalTime;
+	}
+	
+	public void setCPM(String fullText)
+	{
+		fullText = fullText.replace(" ", "");
+		CPM = fullText.length()/totalTime;
 		
 	}
 	
