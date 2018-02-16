@@ -2,6 +2,7 @@ import java.awt.TextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.print.Printable;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -22,6 +23,7 @@ public class Game implements KeyListener
 		this.wordList = wordList;
 		this.score = score;
 		currentWord = "";
+		
 		tField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) 
@@ -54,7 +56,11 @@ public class Game implements KeyListener
 				//if backspace is pressed it checks to see if a word is being retyped, and the adjusts word count
 				if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
 				{
-					if (currentWord.equals("") || currentWord.equals(" ") || currentWord.equals("  "))
+					if (currentWord.length() > 0)
+					{
+						currentWord = removeChar(currentWord, (currentWord.length() - 1));
+					}
+					if (currentWord.indexOf(" ") >= 0)
 					{
 						count--;
 						score.removeWord();
@@ -110,6 +116,20 @@ public class Game implements KeyListener
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	//replaces character from given string at given index
+	public static String removeChar(String str, int index) 
+	{
+		StringBuilder sb = new StringBuilder(str);
+		sb.deleteCharAt(index);
+		
+		str = sb.toString();
+		
+		return str;
+	}
+	
+	
 
 	
 
